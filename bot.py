@@ -11,15 +11,7 @@ chatbot = ChatBot("Chatpot")
 trainer = ListTrainer(chatbot)
 cleaned_corpus = clean_corpus(CORPUS_FILE)
 trainer.train(cleaned_corpus)
-
-trainer.train([
-    "Hi",
-    "Welcome, friend 🤗",
-])
-trainer.train([
-    "Are you a plant?",
-    "No, I'm the pot below the plant!",
-])
+trainer.export_for_training('./my_export.json')
 
 exit_conditions = (":q", "quit", "exit")
 while True:
@@ -27,4 +19,4 @@ while True:
     if query in exit_conditions:
         break
     else:
-        print(f"🪴 {chatbot.get_response(query)}")
+        print(f"🪴 {chatbot.get_response(query)}".capitalize())
